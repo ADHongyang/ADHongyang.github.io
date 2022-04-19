@@ -69,6 +69,7 @@ class RedBlackTree {
 		}else{
 			node.initNodeY = node.parentNode.initNodeY + RedBlackTree.nodeMapUnitY;//层级加一
 			let side = this._getWhichSideFromParent(node);
+			console.log(side)
 			if(side == 'left'){
 				if(node.secondSubNode){
 					node.initNodeX = node.parentNode.initNodeX - RedBlackTree.nodeMapUnitX * 2 - this._getNodeWidth(node.secondSubNode) * RedBlackTree.nodeMapUnitX;
@@ -132,12 +133,10 @@ class RedBlackTree {
 	 * @param {*} node 
 	 */
 	_getNodeWidth(node){
-		console.log(node.num)
 		if(!node){//当该节点为null时
 			return 0;
 		}else{
 			if(!this.nodeWidthMap[node.num]){
-				console.log(node.num)
 				this.nodeWidthMap[node.num] = this._getNodeWidth(node.firstSubNode) + this._getNodeWidth(node.secondSubNode) + 2;
 			}
 			return this.nodeWidthMap[node.num];
@@ -208,6 +207,7 @@ class RedBlackTree {
 
 		// 清空nodeMap
 		this.nodeMap = {};
+		this.nodeWidthMap = {};
 		// 遍历红黑树，获取节点地图this.nodeMap
 		this.traverseTree(this.initNode);
 		this.getTreeNodeBackgroundColor(this.initNode, this.initNode.nodeMinNum);
@@ -364,6 +364,7 @@ class RedBlackTree {
 
 		// 清空nodeMap
 		this.nodeMap = {};
+		this.nodeWidthMap = {};
 		// 遍历红黑树，获取节点地图this.nodeMap
 		this.traverseTree(this.initNode);
 		this.getTreeNodeBackgroundColor(this.initNode, this.initNode.nodeMinNum);
@@ -601,6 +602,7 @@ class RedBlackTree {
 		this.preNodeMap = this.nodeMap;
 		// 清空nodeMap
 		this.nodeMap = {};
+		this.nodeWidthMap = {};
 		// console.log()
 		// 遍历红黑树，获取节点地图this.nodeMap
 		let initNode = this._getInitNode(this.initNode)
