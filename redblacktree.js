@@ -132,14 +132,15 @@ class RedBlackTree {
 	 * @param {*} node 
 	 */
 	_getNodeWidth(node){
+		console.log(node.num)
 		if(!node){//当该节点为null时
 			return 0;
 		}else{
-			if(this.nodeWidthMap[node.num]){
-				return this.nodeWidthMap[node.num]
-			}else{
-				return this._getNodeWidth(node.firstSubNode) + this._getNodeWidth(node.secondSubNode) + 2;
+			if(!this.nodeWidthMap[node.num]){
+				console.log(node.num)
+				this.nodeWidthMap[node.num] = this._getNodeWidth(node.firstSubNode) + this._getNodeWidth(node.secondSubNode) + 2;
 			}
+			return this.nodeWidthMap[node.num];
 		}
 	}
 	/**
