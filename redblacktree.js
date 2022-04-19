@@ -62,7 +62,7 @@ class RedBlackTree {
 	 */
 	traverseTree(node){
 		// 获取坐标节点坐标，保存坐标
-		let r = (Math.pow(2, (node.nodeMaxNum - 1)) + (node.nodeMaxNum / 2 ))  * RedBlackTree.nodeMapUnitX;
+		// let r = (Math.pow(2, (node.nodeMaxNum - 1)) + (node.nodeMaxNum / 2 ))  * RedBlackTree.nodeMapUnitX;
 		if(node.parentNode == null){// 当前节点等于初始化节点
 			node.initNodeX = 0;
 			node.initNodeY = 0;
@@ -76,7 +76,7 @@ class RedBlackTree {
 					node.initNodeX = node.parentNode.initNodeX - RedBlackTree.nodeMapUnitX * 2 ;
 				}
 			}else {
-				node.initNodeX = node.parentNode.initNodeX + r ;
+				// node.initNodeX = node.parentNode.initNodeX + r ;
 				if(node.firstSubNode){
 					node.initNodeX = node.parentNode.initNodeX + RedBlackTree.nodeMapUnitX * 2 + this._getNodeWidth(node.firstSubNode) * RedBlackTree.nodeMapUnitX;
 				}else{
@@ -88,7 +88,6 @@ class RedBlackTree {
 		this.nodeMap[node.num] = {
 			x: node.initNodeX,
 			y: node.initNodeY,
-			// r_sub: (r - RedBlackTree.nodeMapUnitX / 2) / 2 + RedBlackTree.nodeMapUnitX / 2,
 			node_num: node.num
 		};
 		
